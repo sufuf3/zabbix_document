@@ -1,0 +1,31 @@
+linux核心資訊：Linux 2.6.32-504.8.1.el6.x86_64 
+作業系統：CentOS release 6.6 (Final)
+zabbix：2.4
+
+安裝：
+yum -y upgrade
+rpm -ivh http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-release-2.4-1.el6.noarch.rpm
+yum install zabbix-server-mysql zabbix-web-mysql
+yum -y install httpd php php-mysql mysql mysql-server mod_ssl mod_perl mod_auth_mysql mysql-connector-odbc mysql-devel libdbi-dbd-mysql httpd-manual
+
+yum install zabbix-agent
+yum install net-snmp*
+
+Mysql設定：
+service mysqld start
+mysql -u root -p 
+  mysql> create database zabbix;
+  mysql> grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';
+  mysql> quit
+cd /usr/share/zabbix/
+mysql -u root zabbix < schema.sql
+mysql -u root zabbix < images.sql
+mysql -u root zabbix < data.sql
+vim /etc/zabbix/zabbix_server.conf
+  DBName=zabbix
+  DBUser=zabbix
+  DBPassword=zabbix
+
+啟動：
+service httpd restart
+service zabbix-server start
