@@ -1,3 +1,6 @@
+zabbix server 主機hosts設定
+vim /etc/hosts
+  zabbix server 主機IP
 zabbix server 主機防火牆
 vi /etc/sysconfig/iptables
   -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
@@ -19,6 +22,9 @@ vi /etc/sysconfig/iptables
 
 /etc/init.d/iptables restart
 
+zabbix proxy 主機hosts設定
+vim /etc/hosts
+  zabbix proxy 主機IP
 zabbix proxy 主機防火牆
 vi /etc/sysconfig/iptables
   -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
