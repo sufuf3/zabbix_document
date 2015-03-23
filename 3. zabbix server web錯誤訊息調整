@@ -1,0 +1,21 @@
+1. Warning: strtotime() && Warning: date() 訊息解決
+在
+/usr/share/zabbix/include/classes/user/CWebUser.php
+/usr/share/zabbix/include/page_header.php
+加入 date_default_timezone_set('Asia/Taipei');
+
+2. 解決Zabbix　 server　 is 　not 　running 問題
+vim /usr/share/zabbix/conf/zabbix.conf.php.example 　
+修改MySQL 的密碼：$DB["PASSWORD"]  = 'zabbix';
+ /etc/init.d/zabbix-server 　restart
+
+3. zabbix 　中文化 　
+vim  　 /usr/share/zabbix/include/locales.inc.php
+'zh_TW' => array('name' => _('Chinese (zh_TW)'),    	'display' => false),
+改為
+'zh_TW' => array('name' => _('Chinese (zh_TW)'),    	'display' => true),
+至「Profile」的「Language」選項中選擇 Chinese (zh_TW)
+
+4. 權限
+用戶 為可看
+管理員 為管理
