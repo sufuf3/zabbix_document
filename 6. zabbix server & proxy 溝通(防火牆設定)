@@ -1,0 +1,8 @@
+vi /etc/sysconfig/iptables
+  
+  
+  
+  
+  
+  
+/etc/init.d/iptables restart
