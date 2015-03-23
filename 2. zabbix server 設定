@@ -1,0 +1,26 @@
+vim /etc/zabbix/zabbix_server.conf
+  SourceIP=zabbix server 主機IP
+  PidFile=/var/run/zabbix/zabbix_server.pid
+  DBHost=localhost
+  DBName=zabbix
+  DBUser=zabbix
+  DBPassword=zabbix
+  DBSocket=/var/lib/mysql/mysql.sock
+  StartTrappers=10
+  SNMPTrapperFile=/var/log/snmptt/snmptt.log
+  StartSNMPTrapper=1
+  Timeout=30
+  AlertScriptsPath=/usr/lib/zabbix/alertscripts
+  ExternalScripts=/usr/lib/zabbix/externalscripts
+
+vim /etc/zabbix/zabbix_agentd.conf
+  PidFile=/var/run/zabbix/zabbix_agentd.pid
+  LogFile=/var/log/zabbix/zabbix_agentd.log
+  LogFileSize=0
+  SourceIP= zabbix server 主機IP
+  Server=127.0.0.1
+  ListenPort=10050
+  ServerActive=127.0.0.1
+  Hostname=Zabbix server
+  Include=/etc/zabbix/zabbix_agentd.d/
+  
